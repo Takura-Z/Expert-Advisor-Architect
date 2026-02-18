@@ -103,7 +103,7 @@ with col_logo:
     except:
         st.write("🏛️") # Fallback icon
 with col_title:
-    st.title("EA ARCHITECT")
+    st.title("EA_ARCHITECT")
 
 # --- STEP 1: INTAKE ---
 if st.session_state.step == 1:
@@ -325,3 +325,4 @@ elif st.session_state.step == 5:
         st.rerun()
 
 st.caption("MT5 EA Architect System © 2026")
+
