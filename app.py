@@ -224,13 +224,13 @@ elif st.session_state.step == 4:
     
     total_chars = len(st.session_state.data.get('entry', '')) + len(st.session_state.data.get('exit', ''))
     if total_chars > 850:
-        complexity_label, complexity_fee = "🔴 Complex Strategy", 25.0
+        complexity_label, complexity_fee = "🔴 Complex Strategy", 30.0
     elif total_chars > 400:
-        complexity_label, complexity_fee = "🟡 Medium Level Strategy", 15.0
+        complexity_label, complexity_fee = "🟡 Medium Level Strategy", 20.0
     else:
-        complexity_label, complexity_fee = "🟢 Easy Strategy", 5.0
+        complexity_label, complexity_fee = "🟢 Easy Strategy", 10.0
 
-    base_fee = 15.0
+    base_fee = 49.0
     feature_fee = len(st.session_state.data.get('features', [])) * 5.0
     raw_subtotal = base_fee + feature_fee + complexity_fee
     subtotal = min(raw_subtotal, 200.0)
@@ -323,5 +323,6 @@ elif st.session_state.step == 5:
         st.session_state.data = {}
         st.session_state.submitted = False # Explicitly reset flag for new project
         st.rerun()
+
 
 st.caption("MT5 EA Architect System © 2026")
