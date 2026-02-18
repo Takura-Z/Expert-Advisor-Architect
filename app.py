@@ -141,20 +141,20 @@ elif st.session_state.step == 2:
         st.subheader("Logic Definition")
         entry = st.text_area("Entry Logic (Include Timeframes)", 
                              value=st.session_state.data.get('entry', ''),
-                             max_chars=600, height=150, placeholder="Define your buy/sell rules here...")
+                             max_chars=250, height=150, placeholder="Define your buy/sell rules here...")
         
-        color_e = "#00FFA3" if len(entry) < 550 else "#FF4B4B"
-        st.markdown(f'<p class="counter-text" style="color: {color_e}"> 600 characters</p>', unsafe_allow_html=True)
+        color_e = "#00FFA3" if len(entry) < 225 else "#FF4B4B"
+        st.markdown(f'<p class="counter-text" style="color: {color_e}"> 250 characters</p>', unsafe_allow_html=True)
         
         entry_img = st.file_uploader("Optional: Upload Entry Visual (Screenshot/Chart)", type=['png', 'jpg', 'jpeg'], key="entry_u")
         st.divider()
         
         exit_r = st.text_area("Exit Logic (Close Conditions)", 
                               value=st.session_state.data.get('exit', ''),
-                              max_chars=400, height=100, placeholder="Define when to close trades...")
+                              max_chars=120, height=100, placeholder="Define when to close trades...")
         
-        color_x = "#00FFA3" if len(exit_r) < 350 else "#FF4B4B"
-        st.markdown(f'<p class="counter-text" style="color: {color_x}"> 400 characters</p>', unsafe_allow_html=True)
+        color_x = "#00FFA3" if len(exit_r) < 100 else "#FF4B4B"
+        st.markdown(f'<p class="counter-text" style="color: {color_x}"> 120 characters</p>', unsafe_allow_html=True)
         
         exit_img = st.file_uploader("Optional: Upload Exit Visual (Screenshot/Chart)", type=['png', 'jpg', 'jpeg'], key="exit_u")
         st.divider()
@@ -203,10 +203,10 @@ elif st.session_state.step == 3:
         
         risk_notes = st.text_area("Specific Risk Rules", 
                                   value=st.session_state.data.get('risk_notes', ''),
-                                  max_chars=300, placeholder="e.g. No trading on Fridays, Max 3 trades per day.")
+                                  max_chars=50, placeholder="e.g. No trading on Fridays, Max 3 trades per day.")
         
-        color_rn = "#00FFA3" if len(risk_notes) < 270 else "#FF4B4B"
-        st.markdown(f'<p class="counter-text" style="color: {color_rn}"> 300 characters</p>', unsafe_allow_html=True)
+        color_rn = "#00FFA3" if len(risk_notes) < 30 else "#FF4B4B"
+        st.markdown(f'<p class="counter-text" style="color: {color_rn}"> 50 characters</p>', unsafe_allow_html=True)
 
         col1, col2 = st.columns(2)
         if col1.form_submit_button("← Back"):
@@ -223,14 +223,14 @@ elif st.session_state.step == 4:
     st.progress(1.0)
     
     total_chars = len(st.session_state.data.get('entry', '')) + len(st.session_state.data.get('exit', ''))
-    if total_chars > 850:
-        complexity_label, complexity_fee = "🔴 Complex Strategy", 30.0
-    elif total_chars > 400:
-        complexity_label, complexity_fee = "🟡 Medium Level Strategy", 20.0
+    if total_chars > 300:
+        complexity_label, complexity_fee = "🔴 Complex Strategy", 35.0
+    elif total_chars > 150:
+        complexity_label, complexity_fee = "🟡 Medium Level Strategy", 25.0
     else:
-        complexity_label, complexity_fee = "🟢 Easy Strategy", 10.0
+        complexity_label, complexity_fee = "🟢 Easy Strategy", 15.0
 
-    base_fee = 49.0
+    base_fee = 59.0
     feature_fee = len(st.session_state.data.get('features', [])) * 5.0
     raw_subtotal = base_fee + feature_fee + complexity_fee
     subtotal = min(raw_subtotal, 200.0)
@@ -326,3 +326,4 @@ elif st.session_state.step == 5:
 
 
 st.caption("MT5 EA Architect System © 2026")
+
