@@ -144,7 +144,7 @@ elif st.session_state.step == 2:
                              max_chars=250, height=150, placeholder="Define your buy/sell rules here...")
         
         color_e = "#00FFA3" if len(entry) < 225 else "#FF4B4B"
-        st.markdown(f'<p class="counter-text" style="color: {color_e}"> 250 characters</p>', unsafe_allow_html=True)
+        st.markdown(f'<p class="counter-text" style="color: {color_e}"> {len(entry)} / 250 characters</p>', unsafe_allow_html=True)
         
         entry_img = st.file_uploader("Optional: Upload Entry Visual (Screenshot/Chart)", type=['png', 'jpg', 'jpeg'], key="entry_u")
         st.divider()
@@ -154,7 +154,7 @@ elif st.session_state.step == 2:
                               max_chars=120, height=100, placeholder="Define when to close trades...")
         
         color_x = "#00FFA3" if len(exit_r) < 100 else "#FF4B4B"
-        st.markdown(f'<p class="counter-text" style="color: {color_x}"> 120 characters</p>', unsafe_allow_html=True)
+        st.markdown(f'<p class="counter-text" style="color: {color_x}"> {len(exit_r)} / 120 characters</p>', unsafe_allow_html=True)
         
         exit_img = st.file_uploader("Optional: Upload Exit Visual (Screenshot/Chart)", type=['png', 'jpg', 'jpeg'], key="exit_u")
         st.divider()
@@ -206,8 +206,8 @@ elif st.session_state.step == 3:
                                   max_chars=50, placeholder="e.g. No trading on Fridays, Max 3 trades per day.")
         
         color_rn = "#00FFA3" if len(risk_notes) < 30 else "#FF4B4B"
-        st.markdown(f'<p class="counter-text" style="color: {color_rn}"> 50 characters</p>', unsafe_allow_html=True)
-
+        st.markdown(f'<p class="counter-text" style="color: {color_rn}"> {len(risk_notes)} / 50 characters</p>', unsafe_allow_html=True)
+        
         col1, col2 = st.columns(2)
         if col1.form_submit_button("← Back"):
             st.session_state.step = 2
@@ -326,5 +326,6 @@ elif st.session_state.step == 5:
 
 
 st.caption("MT5 EA Architect System © 2026")
+
 
 
