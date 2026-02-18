@@ -161,7 +161,7 @@ elif st.session_state.step == 2:
         
         assets = st.text_input("Target Assets", 
                                value=st.session_state.data.get('assets', ''),
-                               max_chars=100, placeholder="e.g. XAUUSD, EURUSD, BTC")
+                               max_chars=50, placeholder="e.g. XAUUSD, EURUSD, BTC")
         
         col1, col2 = st.columns(2)
         if col1.form_submit_button("← Back"):
@@ -326,4 +326,5 @@ elif st.session_state.step == 5:
 
 
 st.caption("MT5 EA Architect System © 2026")
+
 
