@@ -3,6 +3,25 @@ import requests
 import io
 import base64
 
+import threading
+import time
+
+# --- PINGER CONFIG ---
+APP_URL = "https://expert-advisor-architect.streamlit.app/" 
+
+def keep_alive():
+    while True:
+        try:
+            requests.get(APP_URL, timeout=10)
+        except:
+            pass
+        time.sleep(1200)
+
+# Start the pinger only once
+if 'pinger_active' not in st.session_state:
+    threading.Thread(target=keep_alive, daemon=True).start()
+    st.session_state.pinger_active = True
+
 # --- HELPER: IMAGE TO BASE64 ---
 def get_base64_of_bin_file(bin_file):
     try:
@@ -324,6 +343,5 @@ elif st.session_state.step == 5:
 
 
 st.caption("MT5 EA Architect System © 2026")
-
 
 
